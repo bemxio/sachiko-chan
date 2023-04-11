@@ -32,14 +32,13 @@ intents.members = True
 bot = discord.Bot(intents=intents)
 
 # set variables in the bot
-bot.conversations = {}
-
 with open("src/prompt.txt", "r", encoding="utf-8") as file:
     bot.initial_prompt = file.read()
 
 # load the bot's cogs
 bot.load_extension("cogs.events")
 bot.load_extension("cogs.chat")
+bot.load_extension("cogs.admin")
 
 # run the bot
 bot.run(os.getenv("DISCORD_TOKEN"))

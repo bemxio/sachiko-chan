@@ -67,13 +67,13 @@ class Chat(Cog):
         await message.reply(filter_markdown(content), mention_author=False)
 
     @discord.slash_command(description="Makes Sachiko-chan forget the message history with you.")
-    async def clear(self, ctx: discord.ApplicationContext):
+    async def forget(self, ctx: discord.ApplicationContext):
         author = str(ctx.author.id)
 
         if author in self.conversations:
             self.conversations[author] = [{"role": "user", "content": self.bot.initial_prompt}]
 
-        await ctx.respond("`Successfully cleared the conversation history.`")
+        await ctx.respond("`Successfully cleared your conversation history.`")
 
 def setup(bot: discord.Bot):
     bot.add_cog(Chat(bot))
