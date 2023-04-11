@@ -26,17 +26,20 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 # initialize the Discord bot
 intents = discord.Intents.default()
 
-intents.message_content = True
+intents.messages = True
 intents.members = True
 
 bot = discord.Bot(intents=intents)
 
 # set variables in the bot
-bot.model = os.getenv("OPENAI_MODEL")
 bot.conversations = {}
+
+with open("src/prompt.txt", "r", encoding="utf-8") as file:
+    bot.initial_prompt = file.read()
 
 # load the bot's cogs
 bot.load_extension("cogs.events")
+bot.load_extension("cogs.chat")
 
 # run the bot
 bot.run(os.getenv("DISCORD_TOKEN"))
