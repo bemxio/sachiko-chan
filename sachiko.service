@@ -10,7 +10,7 @@ RestartSec=3
 User=bemxio
 
 WorkingDirectory=/home/bemxio/sachiko-chan
-EnvironmentFile=/home/bemxio/sachiko-chan/.env
+EnvironmentFile=/home/bemxio/sachiko-chan/src/.env
 ExecStart=/home/bemxio/sachiko-chan/venv/bin/python3 /home/bemxio/sachiko-chan/src/main.py
 
 [Install]
