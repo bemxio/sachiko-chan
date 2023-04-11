@@ -1,0 +1,17 @@
+[Unit]
+Description=Sachiko-chan's systemd service
+After=network.target
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=3
+
+User=bemxio
+
+WorkingDirectory=/home/bemxio/sachiko-chan
+EnvironmentFile=/home/bemxio/sachiko-chan/.env
+ExecStart=/home/bemxio/sachiko-chan/venv/bin/python3 /home/bemxio/sachiko-chan/src/main.py
+
+[Install]
+WantedBy=multi-user.target
