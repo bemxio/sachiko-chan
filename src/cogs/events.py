@@ -25,7 +25,7 @@ class Events(Cog):
         stream = StringIO("".join(exception))
         file = discord.File(stream, filename="error.log")
 
-        logging.warning(f"A user tried to use `{self.bot.command_prefix}{ctx.command}` but got an error: {error}")
+        logging.warning(f"A user tried to use `/{ctx.command}` but got an error: {error}")
 
         await ctx.respond(message, file=file)
 
