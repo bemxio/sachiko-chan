@@ -22,6 +22,9 @@ env.bak/
 .env
 .venv
 
+# Log files
+*.log
+
 # Project-specific files
 src/assets/
 _ignore/
