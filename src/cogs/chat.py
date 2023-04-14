@@ -3,7 +3,6 @@ import discord
 import openai
 
 import functools
-import asyncio
 import os
 
 def filter_markdown(text: str) -> str:
