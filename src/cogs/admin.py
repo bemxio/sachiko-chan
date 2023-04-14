@@ -15,9 +15,8 @@ class Admin(Cog):
             return await ctx.respond("`You do not have permission to use this command.`")
 
         cog = self.bot.cogs["Chat"]
-        conversations = cog.conversations
 
-        stream = StringIO(json.dumps(conversations, indent=4))
+        stream = StringIO(json.dumps(cog.conversations, indent=4))
         file = discord.File(stream, filename="conversations.json")
 
         await ctx.respond(file=file)
