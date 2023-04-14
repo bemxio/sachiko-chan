@@ -26,7 +26,7 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 # initialize the Discord bot
 intents = discord.Intents.default()
 
-intents.messages = True
+intents.message_content = True
 intents.members = True
 
 bot = discord.Bot(intents=intents)
