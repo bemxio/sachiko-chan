@@ -36,6 +36,9 @@ class Events(Cog):
         if message.author == self.bot.user:
             return
 
+        if utilities.is_mentioned(self.bot.user, message):
+            return
+
         if not "sachi" in message.content.lower() and not utilities.random_chance(20):
             return
 
