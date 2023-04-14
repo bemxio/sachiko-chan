@@ -2,6 +2,8 @@ from discord.ext.commands import Cog
 import discord
 import openai
 
+import functools
+import asyncio
 import os
 
 def filter_markdown(text: str) -> str:
@@ -54,8 +56,16 @@ class Chat(Cog):
             "role": "user", "content": content
         })
 
-        async with message.channel.typing():
-            response = openai.ChatCompletion.create(model=os.getenv("OPENAI_MODEL"), messages=self.conversations[author])
+        # trigger typing indicator while ChatCompletion is running
+        await message.channel.trigger_typing()
+
+        function = functools.partial(
+            openai.ChatCompletion.create, 
+
+            model=os.getenv("OPENAI_MODEL"), 
+            messages=self.conversations[author]
+        )
+        response = await self.bot.loop.run_in_executor(None, function)
 
         response = response.choices[0].message
         content = response.content
