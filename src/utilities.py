@@ -32,11 +32,7 @@ def is_mentioned(user: discord.User, message: discord.Message) -> bool:
 
     return False
 
-async def chat_request(
-    messages: list,
-    model: str = "gpt-3.5-turbo", 
-    loop: asyncio.AbstractEventLoop = asyncio.get_event_loop()
-) -> OpenAIObject:
+async def chat_request(messages: list, model: str = "gpt-3.5-turbo", loop: asyncio.AbstractEventLoop = asyncio.get_event_loop()) -> OpenAIObject:
     function = functools.partial(ChatCompletion.create, model=model, messages=messages)
     
     response = await loop.run_in_executor(None, function)
